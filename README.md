@@ -25,44 +25,6 @@ store written from scratch in Java, with its own event loop, wire protocol parse
 - 🔭 **Working on:** full stack products at [Value Research](https://www.valueresearchonline.com/)
 - 🌱 **Learning:** Java backend engineering, LLM APIs and AI agents
 - 💬 **Ask me about:** React and Next.js performance, CMS-driven architecture, frontend testing
-- ⚡ **Fun fact:** I found a 27x slowdown in my own database by benchmarking it against real Redis, then fixed it
-
----
-
-## Featured project: MiniRedis
-
-**[MiniRedis](https://github.com/piyush-dewangan/Redis)** is a Redis-compatible in-memory data store built
-from scratch in **Java 17** with no frameworks and no runtime dependencies. It speaks the real Redis
-protocol (RESP2), so the stock `redis-cli` works against it unchanged.
-
-| | |
-|---|---|
-| **Architecture** | Single-threaded, non-blocking event loop on Java NIO, like Redis itself |
-| **Commands** | 43 across strings, lists, hashes, sets, expiry, pub/sub and `MULTI`/`EXEC` transactions |
-| **Durability** | Append-only file with `always` / `everysec` / `no` fsync policies, crash recovery and background compaction |
-| **Memory** | TTL expiry (lazy plus active sweep) and exact O(1) LRU eviction |
-| **Testing** | 489 automated tests, including differential tests that require **byte-identical** output with Redis 7.0.15 |
-| **Performance** | 93-101% of Redis throughput with pipelining and no persistence (`redis-benchmark`) |
-
-> Benchmarking exposed that my first version fsynced once per client instead of once per event-loop
-> iteration, making it about 27x slower than Redis under `appendfsync always`. Batching the writes
-> brought it to parity, and a test now guards against the regression.
-
-```bash
-./mvnw clean package
-java -jar target/mini-redis.jar --appendonly yes
-redis-cli ping   # PONG
-```
-
----
-
-## More projects
-
-| Project | What it is | Stack |
-|---|---|---|
-| [**Quick Commerce Platform**](https://github.com/piyush-dewangan/quick-commerce) | Full stack shopping app with authentication, cart, product filtering and an admin dashboard | React, Node.js, Express.js, MongoDB, Redux |
-| [**Value Research Stock Advisor**](https://www.valueresearchstocks.com/landing/) | Stock research product: screeners, comparison tools, interactive charts and a subscription payment flow | Next.js, Strapi CMS, Redux Toolkit, Highcharts |
-| [**Value Research Online**](https://www.valueresearchonline.com/) | Investor platform with a portfolio tracker, stock pages and a paywalled magazine | React, Next.js, jQuery, DataTables |
 
 ---
 
@@ -111,15 +73,6 @@ redis-cli ping   # PONG
 ![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=apachemaven&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
-
----
-
-## GitHub stats
-
-<p align="center">
-  <img height="170" alt="Piyush's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=piyush-dewangan&show_icons=true&hide_border=true&count_private=true" />
-  <img height="170" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=piyush-dewangan&layout=compact&hide_border=true" />
-</p>
 
 ---
 
